@@ -17,8 +17,8 @@ When('I select the {string} filter', async function(filterApplied) {
 });
 
 When('I choose the first product', async function() {
-    await expect (browsePage.firstProduct).toBeDisplayed();
-    await browsePage.firstProduct.click();
+    await expect (browsePage.allProducts).toBeDisplayed();
+    await browsePage.allProducts[0].click();
     await expect (productPage.productOpenedConfirm).toBeDisplayed();
 });
 
@@ -28,7 +28,7 @@ When('I search for a size that is in stock', async function() {
     let index = 1;
     // This loop is for checking if item is in stock, if not, the size gets changed
     // until a size that the item is in stock with is found
-    while (await productPage.itemInStock.getText() == notInStock) {
+    while (await productPage.itemInStock.getText() === notInStock) {
         
         if (index > 3) { // maximum index is 3, no need to go futher
             throw Error('No items are in stock!'); 
