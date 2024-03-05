@@ -29,7 +29,8 @@ When('I search for a size that is in stock', async function() {
     // This loop is for checking if item is in stock, if not, the size gets changed
     // until a size that the item is in stock with is found
     while (await productPage.itemInStock.getText() === notInStock) {
-        
+        // REVIEW: I wouldn't be so sure about indexes.
+        // Better to fetch all available size options and see check the count.
         if (index > 3) { // maximum index is 3, no need to go futher
             throw Error('No items are in stock!'); 
         };
